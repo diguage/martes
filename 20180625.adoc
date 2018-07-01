@@ -1,0 +1,154 @@
+= 20180625 周 ARTS
+
+== Algorithm
+
+=== 1. Two Sum
+
+Given an array of integers, return indices of the two numbers such that they add up to a specific target.
+
+You may assume that each input would have exactly one solution, and you may not use the same element twice.
+
+https://leetcode.com/problems/two-sum/description/[Two Sum - LeetCode]
+
+[source,java]
+----
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        if (nums == null || nums.length < 2) {
+            return null;
+        }
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return new int[]{i, j};
+                }
+            }
+        }
+
+        return null;
+    }
+}
+----
+
+
+=== 7. Reverse Integer
+
+Given a 32-bit signed integer, reverse digits of an integer.
+
+https://leetcode.com/problems/reverse-integer/description/[Reverse Integer - LeetCode]
+
+[source,java]
+----
+class Solution {
+    public int reverse(int x) {
+        if (x == 0
+                || x > Math.pow(2, 31)
+                || x < -Math.pow(2, 31)) {
+            return 0;
+        }
+
+        int sign = 1;
+        int positiveNum = x;
+        if (x < 0) {
+            sign = -1;
+            positiveNum = x * sign;
+        }
+
+        boolean zeroOfEnd = true;
+        List<Integer> bitNums = new ArrayList<>(15);
+        for (int i = positiveNum; i > 0; ) {
+            int bitNum = i % 10;
+            i = i / 10;
+            if (zeroOfEnd && bitNum == 0) {
+                continue;
+            }
+            bitNums.add(bitNum);
+            if (zeroOfEnd) {
+                zeroOfEnd = false;
+            }
+        }
+
+        long result = 0;
+        for (int j = 0; j < bitNums.size(); j++) {
+            result += bitNums.get(j) * ((long) Math.pow(10, bitNums.size() - j - 1));
+        }
+        if (result > Integer.MAX_VALUE) {
+            return 0;
+        }
+
+        return (int) result * sign;
+    }
+}
+----
+
+
+=== 9. Palindrome Number
+
+Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
+
+https://leetcode.com/problems/palindrome-number/description/[Palindrome Number - LeetCode]
+
+[source,java]
+----
+class Solution {
+    public boolean isPalindrome(int x) {
+        boolean result = true;
+        if (x < 0) {
+            return false;
+        }
+        if (x < 10) {
+            return result;
+        }
+        List<Integer> bitNums = new ArrayList<>(25);
+        for (int i = x; i > 0; i /= 10) {
+            bitNums.add(i % 10);
+        }
+        for (int i = 0; i < bitNums.size() / 2; i++) {
+            if (!bitNums.get(i).equals(bitNums.get(bitNums.size() - i - 1))) {
+                result = false;
+                break;
+            }
+        }
+
+        return result;
+    }
+}
+----
+
+== Review
+
+看了一些，重点介绍两篇文章：
+
+https://medium.com/@IbrahimOKareem/a-beginners-guide-to-the-last-10-years-of-the-internet-b1f7841c4512[A beginner’s guide to the last 10 years of the internet]
+
+回顾了互联网十多年的发展历程，并且从上网人数、网页设计、网速、浏览器、社交网络、移动时代、视频流等几个方面着重对比了前后十年的不同之处。并预言语音搜索、社会商业、移动网络、人工智能等方面将是接下来的发展重点。
+
+https://medium.com/@Amitch5903/top-10-chinese-startups-to-watch-in-2018-90690d7d6109[Top 10 Chinese Startups to Watch in 2018 – Alex Mitchell – Medium]
+
+作者先从背景入手，介绍了中国创业公司面临的几个机遇与问题：人工智能爆发、政府干预、法律缺失、技术的使用模式创新、人口众多等。然后简要分析了十家优质的创业公司，其中包括有：http://www.cloudwalk.cn/[云从科技]、https://www.souche.com/[大搜车]、http://www.imlaidian.com/[来电科技]、https://www.tujia.com/[途家网]、https://t.vipkid.com.cn/[VIPKID]、https://www.icarbonx.com/[iCarbonX]、http://www.deepglint.com/[格灵深瞳]、https://www.liulishuo.com/[流利说]、https://www.pico-interactive.com/neo[Pico Interactive]、http://www.roobo.com/[ROOBO]。不过，感觉作者对中国的了解有些偏差，个人感觉“途家网”已解决不能算是创业公司了。
+
+== Technique
+
+这周闲暇时间都在看《重构》，分享几个重构技巧吧：
+
+. Extract Method
+. Introduce Explaining Variable
+. Replace Method with Object
+. Move Method
+. Move Field
+
+== Share
+
+最近在看《重构》，说一下自己的感受。
+
+在几年前看《大话设计模式》时，被设计模式的精巧之处及对面向对象特性恰到使用所深深折服，产生的直接影响就是加深了对面向对象的理解和使用。
+
+现在看《重构》，起初代码不甚优雅，但是在通过反复使用作者介绍的简单朴实的重构技术，经过多次加工优化，代码逐渐清晰明了。尤其是，现在看的“Chapter 7 Moving Features Between Objects”，通过对代码重构，可以使代码越来越“面向对象化”。
+
+如果说设计模式可以让我们在设计的时候，高屋建瓴地做出一个面向对象的设计；那么，个人认为，重构技术为已有代码修了一条慢慢通向面向对象的康庄大道，可以让我们一步一步把代码优化出面向对象的味道来。
+
+== English
+
+现在每天背诵五句“新概念英语2”的语句，复习大概 40 句。已经坚持 59 天。
+
+接下来，准备每天对一篇文章，把生词也背一下。

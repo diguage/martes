@@ -1,0 +1,49 @@
+= 20180628 周
+
+== Algorithm
+
+== Review
+
+https://medium.com/techtive/does-your-team-write-good-code-8b1dcec6404d[Does your team write good code?]
+
+== Technique
+
+== Share
+
+=== 《Refactoring》- Format of the Refactoring
+
+Name:: The name is important to building a vocabulary of refactoring.
+Summary:: A short summary of the situation in which you need the refactoring and a summary of what the refactoring does.
+Motivation:: The motivation describe why the refactoring should be done and describes circumstances in which it shouldn't be done.
+Mechanics:: The mechanics are a concise, step-by-step description of how to carry out the refactoring.
+Example:: The example show a very simple use of the refactoring to illustrate how it works.
+
+=== SQL
+
+.How to get yesterday's date?
+[source,sql]
+----
+SELECT
+  SUBDATE(CURRENT_DATE, 1), --<1>
+  CURRENT_DATE,
+  CURRENT_TIMESTAMP,
+  DATE_FORMAT(CURRENT_TIMESTAMP, '%Y-%m-%d %H:%i:%S')
+FROM dual;
+----
+<1> https://stackoverflow.com/a/7147028/951836[MySQL selecting yesterday's date]
+
+=== Python
+
+.Combine date and time
+[source,python]
+----
+import datetime
+
+def today():
+    return datetime.datetime.today()
+
+def yesterday():
+    return datetime.date.fromordinal(today().toordinal() - 1)
+
+datetime.datetime.combine(yesterday(), datetime.time(19, 30, 0))
+----
