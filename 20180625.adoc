@@ -125,7 +125,20 @@ https://medium.com/@IbrahimOKareem/a-beginners-guide-to-the-last-10-years-of-the
 
 https://medium.com/@Amitch5903/top-10-chinese-startups-to-watch-in-2018-90690d7d6109[Top 10 Chinese Startups to Watch in 2018 – Alex Mitchell – Medium]
 
-作者先从背景入手，介绍了中国创业公司面临的几个机遇与问题：人工智能爆发、政府干预、法律缺失、技术的使用模式创新、人口众多等。然后简要分析了十家优质的创业公司，其中包括有：http://www.cloudwalk.cn/[云从科技]、https://www.souche.com/[大搜车]、http://www.imlaidian.com/[来电科技]、https://www.tujia.com/[途家网]、https://t.vipkid.com.cn/[VIPKID]、https://www.icarbonx.com/[iCarbonX]、http://www.deepglint.com/[格灵深瞳]、https://www.liulishuo.com/[流利说]、https://www.pico-interactive.com/neo[Pico Interactive]、http://www.roobo.com/[ROOBO]。不过，感觉作者对中国的了解有些偏差，个人感觉“途家网”已解决不能算是创业公司了。
+作者先从背景入手，介绍了中国创业公司面临的几个机遇与问题：人工智能爆发、政府干预、法律缺失、技术的使用模式创新、人口众多等。然后简要分析了十家优质的创业公司，其中包括有：
+
+. http://www.cloudwalk.cn/[云从科技]
+. https://www.souche.com/[大搜车]
+. http://www.imlaidian.com/[来电科技]
+. https://www.tujia.com/[途家网]
+. https://t.vipkid.com.cn/[VIPKID]
+. https://www.icarbonx.com/[iCarbonX]
+. http://www.deepglint.com/[格灵深瞳]
+. https://www.liulishuo.com/[流利说]
+. https://www.pico-interactive.com/neo[Pico Interactive]
+. http://www.roobo.com/[ROOBO]
+
+不过，感觉作者对中国的了解有些偏差，个人感觉“途家网”已解决不能算是创业公司了。
 
 == Technique
 
