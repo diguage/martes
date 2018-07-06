@@ -315,7 +315,7 @@ https://medium.com/@Amitch5903/top-10-chinese-startups-to-watch-in-2018-90690d7d
 
 不过，感觉作者对中国的了解有些偏差，个人感觉“途家网”已解决不能算是创业公司了。
 
-== Technique
+== Tip
 
 这周闲暇时间都在看《重构》，分享几个重构技巧吧：
 

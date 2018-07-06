@@ -1,7 +1,24 @@
-= ARTS 任务
+= MARTES 任务
 
-左耳朵耗子发起了一个活动：每周至少做一个leetcode 的算法题，阅读并点评至少一篇英文技术文章，学习至少一个技术技巧，至少分享一篇有观点和思考的技术文章。坚持至少一年！（也就是：Algorithm、Review、Technique、Share 简称ARTS）。
+== Preface
 
-由于本人英语较差，增加了一个额外任务：每天背诵五句《新概念英语》的句子。其实，我也一直在坚持。😝
+左耳朵耗子在读友群发起了一个活动：每周至少做一个leetcode 的算法题，阅读并点评至少一篇英文技术文章，学习至少一个技术技巧，至少分享一篇有观点和思考的技术文章。坚持至少一年！（也就是：Algorithm、Review、Technique、Share 简称ARTS）。
 
-解题源码： https://github.com/diguage/algorithm-books[diguage/algorithm-books: 刷刷算法题]
+由于本人英语较差，增加了两个额外任务：
+
+. 每天背诵五句《新概念英语》的句子。其实，我也一直在坚持。😝
+. 有感于很多地方需要数学知识，参考读友的做法，扩展数学部分。
+
+== Purpose
+
+* M means learn the Mathematics,
+* A means learn the Algorithm, 
+* R means learn the English, 
+* T means learn the techniques, 
+* E means learn the English,
+* S means learn how to influence people.
+
+
+== Source
+
+https://github.com/diguage/algorithm-books[diguage/algorithm-books: 刷刷算法题]

@@ -6,7 +6,7 @@
 
 https://medium.com/techtive/does-your-team-write-good-code-8b1dcec6404d[Does your team write good code?]
 
-== Technique
+== Tip
 
 == Share
 
