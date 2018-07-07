@@ -1,9 +1,14 @@
 = 20180702 MARTES
+:source-highlighter: pygments
+:pygments-style: monokai
 :stem: latexmath
+// :source-highlighter: coderay
 
 == Mathematics
 
-latexmath:[R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))+\lambda J(f)]
+I use http://latex.codecogs.com/eqneditor/editor.php[Online LaTeX Equation Editor] to write formulas in LATEX.
+
+// latexmath:[R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))+\lambda J(f)]
 
 [stem]
 ++++
@@ -29,7 +34,7 @@ There are two sorted arrays nums1 and nums2 of size m and n respectively.
 
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 
-[source,java]
+[source,java,linenums,highlight='40-50,52,54,56,60-70,!50']
 ----
 package com.diguage.algorithm.leetcode;
 
@@ -137,18 +142,147 @@ public class MedianOfTwoSortedArrays {
 
 == Review
 
-I read the Raft paper this week.
+I read the Raft paper this week. My notes on the paper is followings:
+
+=== Abstract
+
+Raft is a consensus algorithm for managing a replicated log.
+
+----
+What did Raft solve? How to use it?
+----
+
+=== Introduction
+
+Inder to improve understandability, Raft decompose some component and state space reduction.
+
+. leader election
+. log replication
+. safety
+. Cluster membership changes
+. Log compaction
+
+Raft has several novel features:
+
+. Strong leader
+. Leader election
+. Membership changes
+
+=== Replicated state machines
+
+Consensus algorithms typically arise in the context of __replicated state machines__.
+
+Replicated state machines are typically implemented using a replicated log.
+
+Keeping the replicated log consistent is the job of the consensus algorithm. 
+
+Consensus algorithms for practical systems typically have the following properties:
+
+* They ensure safety (never returning an incorrect result) under all non-Byzantine conditions, including network delays, partitions, and packet loss, duplication, and reordering.
+* They are fully functional (available) as long as any majority of the servers are operational and can communicate with each other and with clients. Thus, a typical cluster of five servers can tolerate the failure of any two servers. Servers are assumed to fail by stopping; they may later recover from state on stable storage and rejoin the cluster.
+* They do not depend on timing to ensure the consistency of the logs: faulty clocks and extreme message delays can, at worst, cause availability problems.
+* In the common case, a command can complete as soon as a majority of the cluster has responded to a single round of remote procedure calls; a minority of slow servers need not impact overall system performance.
+
+=== What’s wrong with Paxos?
+
+Paxos has two significant drawbacks:
+
+. The first drawback is that Paxos is exceptionally difficult to understand.
+. The second problem with Paxos is that it does not provide a good foundation for building practical implementations.
+.. One reason is that there is no widely agreed-upon algorithm for multi-Paxos. 
+.. Furthermore, the Paxos architecture is a poor one for building practical systems; this is another consequence of the single-decree decomposition.
+.. Another problem is that Paxos uses a symmetric peer-to-peer approach at its core (though it eventually suggests a weak form of leadership as a performance optimization).
+
+As a result, practical systems bear little resemblance to Paxos.
+
+
+=== Designing for understandability
+
+Designing goals of Raft:
+
+. It must provide a complete and practical foundation for system building;
+. it must be safe under all conditions and available under typical operating conditions;
+. it must be efficient for common operations.
+. *Our most important goal—and most difficult challenge—was understandability.*
+. It must be possible to develop intuitions about the algorithm.
+
+We used two techniques that are generally applicable.
+
+. The first technique is the well-known approach of problem decomposition: wherever possible, we divided problems into separate pieces that could be solved, explained, and understood relatively independently.
+. Our second approach was to simplify the state space by reducing the number of states to consider, making the system more coherent and eliminating nondeterminism where possible.
+
+=== The Raft consensus algorithm
+
+==== Raft basics
+
+Raft decomposes the con- sensus problem into three relatively independent subproblems:
+
+* *Leader election:* a new leader must be chosen when an existing leader fails.
+* *Log replication:* the leader must accept log entries from clients and replicate them across the cluster, forcing the other logs to agree with its own.
+* *Safety*
+
+Three states：
+
+. Leader --  The leader handles all client requests (if a client contacts a follower, the follower redirects it to the leader).
+. Follower -- They issue no requests on their own but simply respond to requests from leaders and candidates.
+. Candidate -- It is used to elect a new leader.
+
+ Terms act as a logical clock in Raft, and they allow servers to detect obsolete information such as stale leaders.
+
+If one server’s current term is smaller than the other’s, then it updates its current term to the larger value.
+
+ How to update?
+
+Raft servers communicate using remote procedure calls (RPCs), and the basic consensus algorithm requires only two types of RPCs. 
+
+. *RequestVote RPCs* are initiated by candidates during elections.
+. *AppendEntries RPCs* are initiated by leaders to replicate log entries and to provide a form of heartbeat.
+
+
+==== Leader election
+
+Two type timeout:
+
+. election timeout
+. 
+
+A candidate wins an election if it receives votes from a majority of the servers in the full cluster for the same term. *Each server will vote for at most one candidate in a given term*, on a first-come-first-served basis.
+
+If the leader’s term (included in its RPC) is at least as large as the candidate’s current term, then the candidate recognizes the leader as legitimate and returns to follower state.
+
+Rejects the RPCs that the term in is smaller than the current term.
+
+Raft uses randomized election timeouts to ensure that split votes are rare and that they are resolved quickly. 
+
+==== Log replication
+
+Term::
+. the term number
+. the integer idex
+
+Raft guarantees that committed entries are durable and will eventually be executed by all of the available state machines.
+
+ How to define the committed entry?
+
+We designed the Raft log mechanism to maintain a high level of coherency between the logs on different servers.
+
+* If two entries in different logs have the same index and term, then they store the same command.
+* If two entries in different logs have the same index and term, then the logs are identical in all preceding entries.
+
+The first property follows from the fact that a leader creates at most one entry with a given log index in a given term, and log entries never change their position in the log.
+
+=== References
 
 . https://raft.github.io/[Raft Consensus Algorithm]
 . http://thesecretlivesofdata.com/raft/[Raft]
 
 == Tip
 
-I share the tip: I want to write JavaDoc in AsciiDoctor. 
+Tip sharing: writing JavaDoc in AsciiDoctor.
 
-If you use Maven, it is easy to generate JavaDoc. You can write JavaDoc in AsciiDoctor, then use the plugin to generate JavaDoc.
+It is easy to generate JavaDoc with Maven. You can write in AsciiDoctor, then use the plugin to generate JavaDoc.
 
-I show the configuaration as follows:
+See configuaration below:
 
 [source,xml]
 ----
@@ -175,11 +309,11 @@ I show the configuaration as follows:
 </plugin>
 ----
 
-If you use IntelliJ IDEA, it will generate "<p>" on JavaDoc empty lines. You should close the feature. Let me show how to close the feature:
+If you use IntelliJ IDEA, it will add `<p>` on JavaDoc empty lines by default. You should close it. Here is how:
 
 `Preferences > Editor > Code Style > Java > JavaDoc > 'Generate "<p>" on empty lines'`
 
-You do not check the options, it is OK.
+Uncheck the option then it is fine.
 
 == English
 == Share
