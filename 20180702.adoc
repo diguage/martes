@@ -431,6 +431,8 @@ During reading the Raft paper, I chose 52 words which I had not known befor.
 . https://book.douban.com/subject/27620408/[你不知道的JavaScript（下卷） (豆瓣)]
 . https://book.douban.com/subject/26342322/[HTML5秘籍（第2版） (豆瓣)] -- HTML 全面介绍。
 
+我还推荐了 MDN： https://developer.mozilla.org/en-US/[MDN Web Docs]。
+
 推荐了一些工具网站：
 
 . https://codepen.io/[CodePen - Front End Developer Playground & Code Editor in the Browser] -- 可以查询某些经典的组件实现。
