@@ -462,6 +462,6 @@ https://trends.google.com/trends/explore?cat=5&geo=CA&q=React,Vue,angular,jQuery
 
 从这些资料来看，入门前端后，掌握 React 也是一个几乎必要的技能。
 
-写这个文档时候，我突发奇想，又在 Google Trends 中，加入了 jQuery 的对比，从上面的结果来看，jQuery 生命力依然强劲，也是一个必备技能。想到这里，我想起了我推荐的 jQuery 源码分析课： http://study.163.com/course/courseMain.htm?courseId=465001[逐行分析jQuery源码的奥秘 - 网易云课堂]。又想起了一个 JavaScript 入门视频： http://study.163.com/course/courseMain.htm?courseId=224014[JavaScript教程-从入门到精通 - 网易云课堂]。也还可以。
+写这个文档时候，我突发奇想，又在 Google Trends 中，加入了 jQuery 的对比，从上面的结果来看，jQuery 生命力依然强劲，也是一个必备技能。想到这里，我想起了我推荐的 jQuery 源码分析课： http://study.163.com/course/courseMain.htm?courseId=465001[逐行分析jQuery源码的奥秘 - 网易云课堂]。又想起了一个 JavaScript 入门视频： http://study.163.com/course/courseMain.htm?courseId=224014[JavaScript教程-从入门到精通 - 网易云课堂] 也还可以。
 
 最近祝这位读友学习顺利！
