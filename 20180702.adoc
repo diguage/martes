@@ -10,20 +10,27 @@ I use http://latex.codecogs.com/eqneditor/editor.php[Online LaTeX Equation Edito
 
 // latexmath:[R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))+\lambda J(f)]
 
+.结构风险定义
 [stem]
 ++++
 R_{srm}(f)=\frac{1}{N}\sum_{i=1}^{N}L(y_{i},f(x_{i}))+\lambda J(f)
 ++++
 
+.训练数据集的平均损失
 [stem]
 ++++
 R_{emp}(\widehat{f}) = \frac{1}{N}\sum_{i=1}^{N}L(y_{i},\widehat{f}(x_{i}))
 ++++
 
+.测试误差
 [stem]
 ++++
 e_{test} = \frac{1}{N^{'}}\sum_{i=1}^{N^{'}}L(y_{i},\widehat{f}(x_{i}))
 ++++
+
+公司安排学习机器学习的知识。这周开始，学习《统计学习方法》。这里记录一下学习中的公式。
+
+NOTE: GitHub 对 AsciiDoctor 的支持不好，这块的公式只能显示出原始内容。
 
 
 == Algorithm
@@ -271,8 +278,38 @@ We designed the Raft log mechanism to maintain a high level of coherency between
 
 The first property follows from the fact that a leader creates at most one entry with a given log index in a given term, and log entries never change their position in the log.
 
+The second property is guaranteed by a simple consistency check performed by AppendEntries.
+
+In Raft, the leader handles inconsistencies by forcing the followers’ logs to duplicate its own. 
+
+Find the latest log entry where the two logs agree, delete any entries in the follower’s log after that point, and send the follower all of the leader’s entries after that point.
+
+Removes any conflicting entries in the follower’s log.
+
+In the normal case a new entry can be replicated with a single round of RPCs to a majority of the cluster.
+
+ Why can a new entry be replicated with a single round of RPCs?
+
+==== Safety
+
+===== Election restriction
+
+The RequestVote RPC implements this restriction: the RPC includes information about the candidate’s log, and the voter denies its vote if its own log is more up-to-date than that of the candidate.
+
+Raft determines which of two logs is more up-to-date by comparing the index and term of the last entries in the logs.
+
+WARNING: I do not understand "Committing entries from previous terms" and "Safety argument" sections.
+
+===== Follower and candidate crashes
+
+===== Timing and availability
+
+Leader election is the aspect of Raft where timing is most critical.
+
+
 === References
 
+. https://raft.github.io/raft.pdf[In Search of an Understandable Consensus Algorithm]
 . https://raft.github.io/[Raft Consensus Algorithm]
 . http://thesecretlivesofdata.com/raft/[Raft]
 
@@ -315,5 +352,114 @@ If you use IntelliJ IDEA, it will add `<p>` on JavaDoc empty lines by default. Y
 
 Uncheck the option then it is fine.
 
+
 == English
+
+First, I keep on reciting more than 50 English sentences every day, including 5 new sentences and reviewing 48 sentences.
+
+During reading the Raft paper, I chose 52 words which I had not known befor.
+
+. attendee
+. authority
+. challenge
+. compound
+. condense
+. consult
+. contradiction
+. decree
+. demonstrate
+. dense
+. densely
+. derive
+. duplicate
+. durable
+. elapse
+. establish
+. exacerbate
+. extraneous
+. facilitate
+. fashion
+. fraction
+. grant
+. hypothesize
+. identical
+. indefinite
+. indefinitely
+. induction
+. inevitable
+. inevitably
+. intervene
+. intuition
+. legitimate
+. magnitude
+. meld
+. notorious
+. notoriously
+. obsolete
+. opaque
+. overall
+. precede
+. preceding
+. prone
+. randomized
+. recipient
+. restriction
+. revert
+. sketch
+. steady
+. struggle
+. subtle
+. superior
+. survey
+
 == Share
+
+一个读友向我询问：该如何学习 Java？
+
+经沟通发现，群友自己在国外读研，迫于生计，从其他专业转行自学 Java。目前是学习 Java 刚刚入门。由于学校课程繁多，只能自学 IT，距离毕业不到两年时间。希望能在毕业之际，找到一个可以安身立命的工作。
+
+鉴于此，考虑到前端知识点不多，学习任务相对较少，而且刷新一下浏览器就能里面看到效果，获得学习反馈。我个人建议学习前端知识：HTML、CSS、JavaScript 为本，后期可以把 HTTP 和算法补起来。推荐了几本经典书籍如下：
+
+. https://book.douban.com/subject/21338365/[HTML & CSS设计与构建网站 (豆瓣)] -- 入门，培养兴趣。
+. https://book.douban.com/subject/10546125/[JavaScript高级程序设计（第3版） (豆瓣)] -- JavaScript 入门，重点看三四五六七八、十、十三、十四章。三遍以上。
+. https://book.douban.com/subject/6038371/[JavaScript DOM编程艺术 （第2版） (豆瓣)] -- 学习 JavaScript 主要作用 DOM 编程。照着撸一遍代码。
+. http://es6.ruanyifeng.com/[ECMAScript 6 入门] -- 现在已经是 ES6 的天下了，不学没法出门。
+. https://book.douban.com/subject/26898555/[CSS 实战手册（第四版） (豆瓣)] -- 两本 CSS 入门加全面学习。
+. https://book.douban.com/subject/26745943/[CSS揭秘 (豆瓣)]
+. https://book.douban.com/subject/26351021/[你不知道的JavaScript（上卷） (豆瓣)] -- 一套很经典的 JavaScript 经典书籍。
+. https://book.douban.com/subject/26854244/[你不知道的JavaScript（中卷） (豆瓣)]
+. https://book.douban.com/subject/27620408/[你不知道的JavaScript（下卷） (豆瓣)]
+. https://book.douban.com/subject/26342322/[HTML5秘籍（第2版） (豆瓣)] -- HTML 全面介绍。
+
+推荐了一些工具网站：
+
+. https://codepen.io/[CodePen - Front End Developer Playground & Code Editor in the Browser] -- 可以查询某些经典的组件实现。
+. https://segmentfault.com/a/1190000000683599[神器——Chrome开发者工具(一)]
+. http://wiki.jikexueyuan.com/project/chrome-devtools/overview.html[谷歌浏览器开发工具综述 - Chrome 开发工具指南]
+. http://www.css88.com/doc/chrome-devtools/[概述 · Chrome 开发者工具中文文档]
+. https://coolshell.cn/articles/17634.html[Chrome开发者工具的小技巧]
+
+明确地定义了一个目标：半年后模仿 http://www.csszengarden.com/[CSS Zen Garden] 来自己实现一套效果样式。
+
+聊到 ARTS 任务，我个人认为 **ARTS 的目的是坚持学习**。工作经验丰富的人，可以分享高大上的东西；但是，这对于刚刚入门的人来说，几乎是不可能的任务。所以，应该根据自身的情况，来调整。对于入门的小伙伴来说，分享自己的学习笔记也是一种不错的选择。
+
+从实用主义的角度来考虑，我建议这位读友先入门，学习完基本知识，以能让自己找到工作为目标来调整自己的 ARTS。
+
+另外，需要强调：**不要降低对自己的标准。**如果没有完成 ARTS 任务，那么就需要反思，节省下来的时间干嘛去了？有没有用来学习？
+
+后续，我又做了一些探索。
+
+通过 Google Trends 可以看到不同前端框架在加拿大的搜索情况，以此也能看到工作机会的大小：
+
+https://trends.google.com/trends/explore?cat=5&geo=CA&q=React,Vue,angular,jQuery[React, Vue, angular, jQuery 探索 - Google 趋势]
+
+后续还看了想过的一些相关资料：
+
+. https://www.oschina.net/news/97810/jun-no-signs-of-slowing-for-react[Hacker News 6 月招聘趋势，React 根本停不下来]
+. https://github.com/adam-golab/react-developer-roadmap[Roadmap to becoming a React developer in 2018]
+
+从这些资料来看，入门前端后，掌握 React 也是一个几乎必要的技能。
+
+写这个文档时候，我突发奇想，又在 Google Trends 中，加入了 jQuery 的对比，从上面的结果来看，jQuery 生命力依然强劲，也是一个必备技能。想到这里，我想起了我推荐的 jQuery 源码分析课： http://study.163.com/course/courseMain.htm?courseId=465001[逐行分析jQuery源码的奥秘 - 网易云课堂]。又想起了一个 JavaScript 入门视频： http://study.163.com/course/courseMain.htm?courseId=224014[JavaScript教程-从入门到精通 - 网易云课堂]。也还可以。
+
+最近祝这位读友学习顺利！
