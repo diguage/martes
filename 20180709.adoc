@@ -1,8 +1,209 @@
 = 20180709 MARTES
+:source-highlighter: pygments
+:pygments-style: monokai
+:stem: latexmath
 
 == Mathematics
+
+I read the "The Calculus Lifesaver: All the Tools You Need to Excel at Calculus". And I learnt functions, diagrams and lines. This is the notes.
+
+函数是将一个的对象转化为另外一个对象的规则。
+
+一个函数必须给每个有效的输入指定唯一的输出。
+
+* *定义域：* 起始对象的集合。
+* *上域：* 可能输出的集合。
+* *值域：* 所有可能的输出所组成的集合。**值域是上域的一个子集。值域是实际输出的集合。**
+
+// 
+
+* *闭区间：* stem:[[a,b]] 等价于 stem:[a \leqslant  x \leqslant b]，包含两端。
+* *开区间：* stem:[(a,b)] 等价于 stem:[a <  x < b]，不包含两端。
+* stem:[[a, \infty)] 等价于 stem:[a \leqslant  x]
+
+反函数，如果 stem:[f(x) = y]，那么 stem:[f^{-1}(y) = x]。
+
+* *偶函数：* 对于 \(f\) 定义域里的所有 \(x\) 有 \(f(-x) = f(x)\)。偶函数的图像关于 \(y\) 轴具有镜面对称性。
+* *奇函数：* 对于 \(f\) 定义域里的所有 \(x\) 有 \(f(-x) = -f(x)\)。奇函数的图像关于原点有 stem:[180°] 的点对称性。
+
+
 == Algorithm
+
+https://leetcode.com/problems/plus-one/description/[Plus One - LeetCode]
+
+[source,java,linenums]
+----
+package com.diguage.algorithm.leetcode;
+
+import java.util.Arrays;
+
+/**
+ * = 66. Plus One
+ *
+ * https://leetcode.com/problems/plus-one/description/[Plus One - LeetCode]
+ *
+ * Given a *non-empty* array of digits representing a non-negative integer,
+ * plus one to the integer.
+ *
+ * The digits are stored such that the most significant digit is at the
+ * head of the list, and each element in the array contain a single digit.
+ *
+ * You may assume the integer does not contain any leading zero, except
+ * the number 0 itself.
+ *
+ * .Example 1:
+ * [source]
+ * ----
+ * Input: [1,2,3]
+ * Output: [1,2,4]
+ * Explanation: The array represents the integer 123.
+ * ----
+ *
+ * .Example 2:
+ * [source]
+ * ----
+ * Input: [4,3,2,1]
+ * Output: [4,3,2,2]
+ * Explanation: The array represents the integer 4321.
+ * ----
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-14 15:30
+ */
+public class PlusOne {
+    public static int[] plusOne(int[] digits) {
+        if (digits == null || digits.length == 0) {
+            return digits;
+        }
+        for (int i = digits.length - 1; i >= 0; i--) {
+            if (digits[i] < 9) {
+                digits[i]++;
+                return digits;
+            } else {
+                digits[i] = 0;
+            }
+        }
+
+        int[] result = new int[digits.length + 1];
+        result[0] = 1;
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] a1 = new int[]{4, 3, 2, 1};
+        int[] a2 = new int[]{9, 9, 9};
+        int[] a3 = new int[]{9, 9, 8};
+        System.out.println(Arrays.toString(plusOne(a1)));
+        System.out.println(Arrays.toString(plusOne(a2)));
+        System.out.println(Arrays.toString(plusOne(a3)));
+    }
+}
+----
+
+
+https://leetcode.com/problems/container-with-most-water/description/[Container With Most Water - LeetCode]
+
+[source,java,linenums]
+----
+package com.diguage.algorithm.leetcode;
+
+/**
+ * = 11. Container With Most Water
+ *
+ * https://leetcode.com/problems/container-with-most-water/description/[Container With Most Water - LeetCode]
+ *
+ * Given n non-negative integers a1, a2, ..., an, where each represents a point
+ * at coordinate (i, ai). n vertical lines are drawn such that the two endpoints
+ * of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis
+ * forms a container, such that the container contains the most water.
+ *
+ * Note: You may not slant the container and n is at least 2.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-13
+ */
+public class ContainerWithMostWater {
+    public static int maxArea(int[] height) {
+        int left = 0;
+        int right = height.length - 1;
+        int result = 0;
+        while (left < right) {
+            int length = right - left;
+            boolean greater = height[left] < height[right];
+            int high = greater ? height[left] : height[right];
+            int area = length * high;
+            if (area > result) {
+                result = area;
+            }
+            if (greater) {
+                left++;
+            } else {
+                right--;
+            }
+        }
+
+        return result;
+    }
+
+    public static void main(String[] args) {
+        int[] height = new int[]{3, 8, 4, 7, 5, 9, 1, 2, 6};
+        System.out.println(maxArea(height));
+    }
+}
+----
+
 == Review
+
+
+
 == Tip
+
+I wrote a Shell script. If you start the script, it can monitor the file change and then convert the AsciiDoctor files to HTML files. The source is as following:
+
+[source,bash,linenums]
+----
+#!/bin/bash
+#
+# AsciiDoctor 实时监控预览工具
+# 
+# Author: D瓜哥，https://www.diguage.com/
+# Date:   2018-07-17
+#
+
+# https://stackoverflow.com/a/9168553/951836
+# kill -9 $(lsof -i:9999 -t) 2> /dev/null
+pid=$(lsof -i:9999 -t); kill -TERM $pid || kill -KILL $pid
+# Start a HTTP Server
+python3 -m http.server 9999 &
+
+function a2h() {
+  afile="$1"
+  if [ ! -z "$afile" -a "$afile" != " " ]; then
+    extension="${afile##*.}"
+    if [ $extension = 'adoc' ]; then
+      # https://stackoverflow.com/a/46250107/951836
+      hfile="`echo $1 | sed -r 's/(.+)\..+|(.*)/\1\2/'`.html"
+      rm -f $hfile &
+      # echo $afile, $hfile
+      asciidoctor -o $hfile $afile
+      echo "Update $afile ..."
+    fi
+  fi
+}
+export -f a2h
+
+# https://stackoverflow.com/a/965072/951836
+# https://stackoverflow.com/a/3228592/951836
+#FILE=123.abc.adoc; echo ${FILE%.adoc};
+
+echo "Start to monitor `pwd` ..."
+
+# https://stackoverflow.com/a/13807906/951836
+# https://stackoverflow.com/a/11003457/951836
+# https://github.com/emcrisostomo/fswatch/wiki/How-to-Use-fswatch#piping-fswatch-output-to-another-process
+# https://stackoverflow.com/a/25524053/951836
+fswatch -0 -e "*.html" -i "*.adoc$" `pwd` | xargs -0 -n 1 -I {} bash -c 'a2h "$@"' _ {}
+----
+
 == English
 == Share
