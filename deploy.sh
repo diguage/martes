@@ -49,7 +49,7 @@ function a2h() {
 
       echo $hfile, $wfile
 
-      $asciidoctor -a stylesdir=$style_dir -a linkcss -a  source-highlighter=coderay $afile -o $hfile
+      $asciidoctor -a stylesdir=$style_dir -a linkcss -a  source-highlighter=coderay -a nofooter $afile -o $hfile
       # 调整样式
       $gsed -i "s/<\/head>/<style>a{text-decoration:none;}.img_bk{text-align:center;}<\/style><\/head>/" $hfile
       # 替换 Font Awesome，(内置功能不能保证版本一致)
