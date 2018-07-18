@@ -154,56 +154,159 @@ public class ContainerWithMostWater {
 
 == Review
 
+My friend recommended a paper to me, http://www.cs.princeton.edu/courses/archive/fall13/cos597E/papers/howtoread.pdf[How to Read a Paper]. I read it and made a note.
+
+This article outlines a practical and efficient three-pass method for reading research papers.
+
+Each pass accomplishes specific goals and builds upon the previous pass: The first pass gives you a general idea about the paper. The second pass lets you grasp the paper’s content, but not its details. The third pass helps you understand the paper in depth.
+
+=== The first pass
+
+This pass should take about five to ten minutes and consists of the following steps:
+
+. Carefully read the title, abstract, and introduction
+. Read the section and sub-section headings, but ignore everything else
+. Glance at the mathematical content (if any) to determine the underlying theoretical foundations
+. Read the conclusions
+. Glance over the references, mentally ticking off the ones you’ve already read
+
+At the end of the first pass, you should be able to answer the **five Cs**:
+
+. **Category:** What type of paper is this? A measurement paper? An analysis of an existing system? A description of a research prototype?
+. **Context:** Which other papers is it related to? Which theoretical bases were used to analyze the problem?
+. **Correctness:** Do the assumptions appear to be valid?
+. **Contributions:** What are the paper’s main contributions?
+. **Clarity:** Is the paper well written?
+
+=== The second pass
+
+In the second pass, read the paper with greater care, but ignore details such as proofs. It helps to jot down the key points, or to make comments in the margins, as you read.
+
+. Look carefully at the figures, diagrams and other illustrations in the paper. Pay special attention to graphs. Are the axes properly labeled? Are results shown with error bars, so that conclusions are statistically significant? Common mistakes like these will separate rushed, shoddy work from the truly excellent.
+. Remember to mark relevant unread references for further reading (this is a good way to learn more about the background of the paper).
+
+The second pass should take up to an hour. After this pass, you should be able to grasp the content of the paper. You should be able to summarize the main thrust of the paper, with supporting evidence, to someone else. This level of detail is appropriate for a paper in which you are interested, but does not lie in your research speciality.
+
+=== The third pass
+
+The key to the third pass is to attempt to virtually re-implement the paper: that is, making the same assumptions as the authors, re-create the work. By comparing this re-creation with the actual paper, you can easily identify not only a paper’s innovations, but also its hidden failings and assumptions.
+
+Moreover, you should think about how you yourself would present a particular idea.
+
+This pass can take about four or five hours for beginners, and about an hour for an experienced reader.
 
 
 == Tip
 
-I wrote a Shell script. If you start the script, it can monitor the file change and then convert the AsciiDoctor files to HTML files. The source is as following:
+I developed a application. It use the AsciiDoctor as a document template. I writed codes to convert AsciiDoctor documents to HTML documents. When I deployed it as a executable Jar, it threw a exception. I spent the whole day fixing the bug. At last, I found _JRuby includes its own nested jar support, which assumes that the jruby-complete.jar is always directly available as a file in its own right._
 
-[source,bash,linenums]
+You can find the explain about the problem:  https://docs.spring.io/spring-boot/docs/current/reference/htmlsingle/#howto-extract-specific-libraries-when-an-executable-jar-runs[Spring Boot Reference Guide: Extract Specific Libraries When an Executable Jar Runs].
+
+[source,xml]
 ----
-#!/bin/bash
-#
-# AsciiDoctor 实时监控预览工具
-# 
-# Author: D瓜哥，https://www.diguage.com/
-# Date:   2018-07-17
-#
-
-# https://stackoverflow.com/a/9168553/951836
-# kill -9 $(lsof -i:9999 -t) 2> /dev/null
-pid=$(lsof -i:9999 -t); kill -TERM $pid || kill -KILL $pid
-# Start a HTTP Server
-python3 -m http.server 9999 &
-
-function a2h() {
-  afile="$1"
-  if [ ! -z "$afile" -a "$afile" != " " ]; then
-    extension="${afile##*.}"
-    if [ $extension = 'adoc' ]; then
-      # https://stackoverflow.com/a/46250107/951836
-      hfile="`echo $1 | sed -r 's/(.+)\..+|(.*)/\1\2/'`.html"
-      rm -f $hfile &
-      # echo $afile, $hfile
-      asciidoctor -o $hfile $afile
-      echo "Update $afile ..."
-    fi
-  fi
-}
-export -f a2h
-
-# https://stackoverflow.com/a/965072/951836
-# https://stackoverflow.com/a/3228592/951836
-#FILE=123.abc.adoc; echo ${FILE%.adoc};
-
-echo "Start to monitor `pwd` ..."
-
-# https://stackoverflow.com/a/13807906/951836
-# https://stackoverflow.com/a/11003457/951836
-# https://github.com/emcrisostomo/fswatch/wiki/How-to-Use-fswatch#piping-fswatch-output-to-another-process
-# https://stackoverflow.com/a/25524053/951836
-fswatch -0 -e "*.html" -i "*.adoc$" `pwd` | xargs -0 -n 1 -I {} bash -c 'a2h "$@"' _ {}
+<plugin>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-maven-plugin</artifactId>
+    <configuration>
+        <requiresUnpack>
+            <dependency>
+                <groupId>org.jruby</groupId>
+                <artifactId>jruby-complete</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.asciidoctor</groupId>
+                <artifactId>asciidoctorj</artifactId>
+            </dependency>
+        </requiresUnpack>
+    </configuration>
+</plugin>
 ----
+
 
 == English
+
+First, I keep on reciting 60 English sentences every day, including 6 new sentences and reviewing 54 sentences.
+
+Second, I read the paper "How to Read a Paper", then I chose some word which I had not known before.
+
+. academic
+. academically
+. acronym
+. analytical
+. appropriate
+. appropriately
+. citation
+. cite
+. concise
+. constitute
+. correspond
+. correspondent
+. corresponding
+. definitive
+. discipline
+. disciplined
+. estimated
+. evidence
+. implicit
+. implicitly
+. jot
+. literature
+. persevere
+. pinpoint
+. shoddy
+. spectrum
+. terminology
+. thumbnail
+
 == Share
+
+我大学老师给我发信息说，有个师妹明年研究生毕业，马上就要校招了，现在为找工作的事情很焦虑。希望我能她一些建议。
+
+老师把我的微信给我师妹，然后晚上就打电话聊了半个小时。了解一些她的情况：中科院大学读研，物联网专业，明年毕业，没有方向，不知道该准备 Java 工程师，还是应该准备产品经理，想准备不知该怎么准备。了解完情况后，我就给出我的建议。
+
+还有一个外部情况需要注意：秋招在即，九月份开始，最多到年底结束。准备时间不多。所以，我的个人建议是这样的：
+
+先说一下 Java 需要准备东西
+
+. 集合类，最基本使用，最好看懂源码。
+. 并发编程
+. 网络编程
+. 反射与动态规划
+. JVM 内存结构
+. 垃圾回收算法
+. 常用 GC 特点以及调休
+. 字节码
+. 类加载
+. JSP & Servlet
+. Spring
+. MyBATIS
+. SpringMVC
+
+除此之外，还需要准备其他的基础知识：
+
+. 网络协议
+. 操作系统
+. 数据库
+. 数据结构与算法
+
+这里面，任何一项都需要花费很长很长的时间去准备。从实际上来不及，或者说很难在短时间内做出出众的效果，这也就很难拿到 Offer。
+
+相对于 Java 职位，个人认为产品经理就简单多了。
+
+首先，关于产品方面的书籍很少，简单列几本最常见的：
+
+. https://book.douban.com/subject/4723970/[人人都是产品经理 (豆瓣)]
+. https://book.douban.com/subject/24305938/[结网@改变世界的互联网产品经理 (豆瓣)]
+. https://book.douban.com/subject/5914587/[启示录 (豆瓣)]
+
+两三个月的时间，差不多够把豆瓣上关于产品方面比较好的书都买来读一遍了。
+
+除此之外，还可以关注一下“最美应用”中，获得设计奖的产品，多去把玩、体会产品设计的细节，形成自己的思路和方法论。
+
+另外，还可以在淘宝上，花几块钱买一套培训机构的教学视频，休闲的时候，拿出来放一放权当做个补充，也可以当成休闲。
+
+在大家都不知道一条明确的路时，稍微有点靠谱的路，努力往前走一走，也许你就已经超过别人了。这样，你在面试的时候，也许就可以胜出了。
+
+当然，我也承认，我没有干过产品经理，不清楚具体应该准备什么。可以找个干产品经理的朋友再咨询咨询。
+
+后话：师妹后来还是选择找 Java 方面的职位。我没有安利成功。😝
