@@ -107,4 +107,8 @@ if [ ! -n "$1" ]; then
     rsync -avz --exclude=".*" ./images ./*.html $style_dir deployer@notes.diguage.com:/home/deployer/diguage.com/notes/martes
     echo ""
     echo "`date '+%Y-%m-%d %H:%M:%S'` deploy"
+    echo ""
+    echo "  https://notes.diguage.com/martes/  "
+    echo ""
+    echo ""
 fi
