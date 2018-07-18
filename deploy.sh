@@ -92,13 +92,13 @@ do
   a2h $a
 done
 
-# # 压缩 CSS
-# cd ./$style_dir
-# for f in `ls .`
-# do
-#   $cssnano $f $f
-# done
-# cd $base_dir
+# 压缩 CSS
+cd ./$style_dir
+for f in `ls .`
+do
+  $cssnano $f $f
+done
+cd $base_dir
 
 
 echo "`date '+%Y-%m-%d %H:%M:%S'` build"
