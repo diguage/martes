@@ -1,4 +1,5 @@
 = 20180625 周 ARTS
+:source-highlighter: coderay
 :allow-uri-read:
 :github_raw_base_path: https://raw.githubusercontent.com/diguage
 :source_base_path: {github_raw_base_path}/algorithm-books/master/leetcode/src/main/java/com/diguage/algorithm/leetcode

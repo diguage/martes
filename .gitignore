@@ -1,3 +1,5 @@
 *.iml
 *.html
 *.pdf
+styles/
+index.adoc
