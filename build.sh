@@ -86,12 +86,16 @@ export -f a2h
 
 touch $index_file
 
-cat <<EOT >> $index_file
-= MARTES
-D瓜哥 <https://www.diguage.com/>
-{docdate}
+# cat >> $index_file <<EOF
+# = MARTES
+# 
+# EOF
 
-EOT
+cat >> $index_file <<EOF
+= MARTES
+
+EOF
+
 
 for a in `ls *.adoc`
 do
@@ -115,7 +119,7 @@ cd $base_dir
 
 echo "`date '+%Y-%m-%d %H:%M:%S'` build"
 
-if [ ! -n "$1" ]; then
+if [ -n "$1" ]; then
     rsync -avz --exclude=".*" ./*.html $style_dir deployer@notes.diguage.com:/home/deployer/diguage.com/notes/martes
     echo ""
     echo "`date '+%Y-%m-%d %H:%M:%S'` deploy"
@@ -123,4 +127,5 @@ if [ ! -n "$1" ]; then
     echo "  https://notes.diguage.com/martes/  "
     echo ""
     echo ""
+    rm -rf *.html $style_dir 1>/dev/null 2>&1 &
 fi
