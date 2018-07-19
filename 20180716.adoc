@@ -1,4 +1,6 @@
 = 20180716 MARTES
+D瓜哥 <https://www.diguage.com/>
+{docdate}
 :source-highlighter: pygments
 :pygments-style: monokai
 :stem: latexmath

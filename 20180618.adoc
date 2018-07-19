@@ -1,4 +1,6 @@
 = 20180628 周
+D瓜哥 <https://www.diguage.com/>
+{docdate}
 
 == Algorithm
 

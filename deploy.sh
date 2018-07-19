@@ -46,10 +46,9 @@ function a2h() {
       filename="${afile%.*}"
       hfile="${filename}_temp.html"
       wfile="$filename.html"
-
-      echo $hfile, $wfile
-
-      $asciidoctor -a stylesdir=$style_dir -a linkcss -a  source-highlighter=coderay -a nofooter $afile -o $hfile
+      # echo $hfile, $wfile
+      
+      $asciidoctor -a stylesdir=$style_dir -a linkcss -a  source-highlighter=coderay -a nofooter -a toc $afile -o $hfile
       # 调整样式
       $gsed -i "s/<\/head>/<style>a{text-decoration:none;}.img_bk{text-align:center;}<\/style><\/head>/" $hfile
       # 替换 Font Awesome，(内置功能不能保证版本一致)
@@ -104,7 +103,7 @@ cd $base_dir
 echo "`date '+%Y-%m-%d %H:%M:%S'` build"
 
 if [ ! -n "$1" ]; then
-    rsync -avz --exclude=".*" ./images ./*.html $style_dir deployer@notes.diguage.com:/home/deployer/diguage.com/notes/martes
+    rsync -avz --exclude=".*" ./*.html $style_dir deployer@notes.diguage.com:/home/deployer/diguage.com/notes/martes
     echo ""
     echo "`date '+%Y-%m-%d %H:%M:%S'` deploy"
     echo ""
