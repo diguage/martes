@@ -2,6 +2,12 @@
 
 == Mathematics
 == Algorithm
+
+[source,java,linenums]
+----
+include::{source_base_path}/XXXX.java[]
+----
+
 == Review
 == Tip
 
