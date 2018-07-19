@@ -41,7 +41,7 @@ There are two sorted arrays nums1 and nums2 of size m and n respectively.
 
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 
-[source,java,linenums,highlight='40-50,52,54,56,60-70,!50']
+[source,java,linenums]
 ----
 package com.diguage.algorithm.leetcode;
 
@@ -357,7 +357,7 @@ Uncheck the option then it is fine.
 
 First, I keep on reciting more than 50 English sentences every day, including 5 new sentences and reviewing 48 sentences.
 
-During reading the Raft paper, I chose 52 words which I had not known befor.
+During reading the Raft paper, I chose 52 words which I had not known before.
 
 . attendee
 . authority
