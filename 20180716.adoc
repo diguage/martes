@@ -1,11 +1,17 @@
 = 20180716 MARTES
 
 == Mathematics
+
 == Algorithm
 
 [source,java,linenums]
 ----
-include::{source_base_path}/XXXX.java[]
+include::{source_base_path}/ThreeSum.java[]
+----
+
+[source,java,linenums]
+----
+include::{source_base_path}/RemoveDuplicatesFromSortedArray.java[]
 ----
 
 == Review
@@ -59,4 +65,5 @@ fswatch -0 -e "*.html" -i "*.adoc$" `pwd` | xargs -0 -n 1 -I {} bash -c 'a2h "$@
 ----
 
 == English
+
 == Share
