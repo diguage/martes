@@ -14,6 +14,11 @@ include::{source_base_path}/ThreeSum.java[]
 include::{source_base_path}/RemoveDuplicatesFromSortedArray.java[]
 ----
 
+[source,java,linenums]
+----
+include::{source_base_path}/RemoveElement.java[]
+----
+
 == Review
 == Tip
 
