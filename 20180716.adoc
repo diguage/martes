@@ -2,6 +2,58 @@
 
 == Mathematics
 
+.基本公式
+[stem]
+++++
+sin(\theta )=\frac{对边}{斜边},  cos(\theta )=\frac{邻边}{斜边},  tan(\theta )=\frac{对边}{邻边}
+++++
+
+.定义
+[stem]
+++++
+csc(x)=\frac{1}{sin(x)},  sec(x)=\frac{1}{cos(x)},  cot(x)=\frac{1}{tan(x)}
+++++
+
+[cols="^,^,^,^,^,^",options="header"]
+|===
+||0|\(\frac{\pi}{6}\)|\(\frac{\pi}{4}\)|\(\frac{\pi}{3}\)|\(\frac{\pi}{2}\)
+
+|sin|0|\(\frac{1}{2}\)|\(\frac{1}{\sqrt{2}}\)|\(\frac{\sqrt{3}}{2}\)|1
+
+|cos|1|\(\frac{\sqrt{3}}{2}\)|\(\frac{1}{\sqrt{2}}\)|\(\frac{1}{2}\)|0
+
+|tan|0|\(\frac{1}{\sqrt{3}}\)|1|\(\sqrt{3}\)|⭐️
+|===
+
+\(sin(x)\)、\(tan(x)\)、\(cot(x)\) 及 \(csc(x)\) 都是 \(x\) 的奇函数。\(cos(x)\) 和 \(sec(x)\) 都是 \(x\) 的偶函数。
+
+.三角恒等式
+[stem]
+++++
+tan(x)=\frac{sin(x)}{cos(x)},  cot(x)=\frac{cos(x)}{sin(x)}
+\\
+cos^{2}(x) + sin^{2}(x)=1
+\\
+1+tan^{2}(x)=sec^{2}(x)
+\\
+cot^{2}(x)+1=csc^{2}(x)
+\\
+sin(x)=cos(\frac{\pi}{2}-x), tan(x)=cot(\frac{\pi}{2}-x), sec(x)=csc(\frac{\pi}{2}-x)
+++++
+
+.公式
+[stem]
+++++
+\begin{align}
+sin(A+B) & = sin(A)cos(B)+cos(A)sin(B) \\ cos(A+B) 
+& = cos(A)cos(B)-sin(A)sin(B) \\ sin(A-B) 
+& = sin(A)cos(B)-cos(A)sin(B) \\ cos(A-B) 
+& = cos(A)cos(B)+sin(A)sin(B) \\ sin(2x) 
+& = 2sin(x)cos(x)             \\ cos(2x) 
+& = 2cos^{2}(x) - 1 = 1 - 2sin^{2}(x)
+\end{align}
+++++
+
 == Algorithm
 
 [source,java,linenums]
