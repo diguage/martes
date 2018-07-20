@@ -2,6 +2,16 @@
 
 == Mathematics
 
+[dot,0716_triangle,svg]
+....
+graph triangle {
+    node [shape=point];
+     a -- b[label = "邻边"];
+     b -- c[label = "对边"];
+     a -- c[label = "斜边"];
+ }
+....
+
 .基本公式
 [stem]
 ++++

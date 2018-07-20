@@ -48,19 +48,20 @@ function a2h() {
       wfile="$filename.html"
       # echo $hfile, $wfile
 
-      $asciidoctor -d article \
-                   -a stylesdir=$style_dir \
-                   -a linkcss \
-                   -a  source-highlighter=coderay \
-                   -a nofooter \
-                   -a toc  \
-                   -a author=D瓜哥 \
-                   -a email=https://www.diguage.com/ \
-                   -a revdate=`date "+%Y-%m-%d"` \
-                   -a stem=latexmath \
-                   -a allow-uri-read \
-                   -a source_base_path=https://raw.githubusercontent.com/diguage/leetcode/master/src/main/java/com/diguage/algorithm/leetcode \
-                   $afile -o $hfile
+      $asciidoctor  -r asciidoctor-diagram \
+                    -d article \
+                    -a stylesdir=$style_dir \
+                    -a linkcss \
+                    -a  source-highlighter=coderay \
+                    -a nofooter \
+                    -a toc  \
+                    -a author=D瓜哥 \
+                    -a email=https://www.diguage.com/ \
+                    -a revdate=`date "+%Y-%m-%d"` \
+                    -a stem=latexmath \
+                    -a allow-uri-read \
+                    -a source_base_path=https://raw.githubusercontent.com/diguage/leetcode/master/src/main/java/com/diguage/algorithm/leetcode \
+                    $afile -o $hfile
 
       # 调整样式
       $gsed -i "s/<\/head>/<style>a{text-decoration:none;}.img_bk{text-align:center;}<\/style><\/head>/" $hfile
