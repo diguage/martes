@@ -2,40 +2,35 @@
 
 == Algorithm
 
-=== 1. Two Sum
+=== https://leetcode.com/problems/two-sum/description/[Two Sum - LeetCode]
 
 Given an array of integers, return indices of the two numbers such that they add up to a specific target.
 
 You may assume that each input would have exactly one solution, and you may not use the same element twice.
 
-https://leetcode.com/problems/two-sum/description/[Two Sum - LeetCode]
-
-[source,java]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/TwoSum.java[]
 ----
 
 
-=== 7. Reverse Integer
+=== https://leetcode.com/problems/reverse-integer/description/[Reverse Integer - LeetCode]
 
 Given a 32-bit signed integer, reverse digits of an integer.
 
-https://leetcode.com/problems/reverse-integer/description/[Reverse Integer - LeetCode]
-
-[source,java]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/ReverseInteger.java[]
 ----
 
+
 这道题费了些周折。提交代码后，在1000多个测试用例处报错了，入参是： `1534236469`。返回结果是一个很奇怪的数字。后来，终于意识到 `1534236469` 不越界，但是翻转过来，`9646324351` 是越界的。把中间技术结果用 `long` 表示后，就OK了。
 
-=== 9. Palindrome Number
+=== https://leetcode.com/problems/palindrome-number/description/[Palindrome Number - LeetCode]
 
 Determine whether an integer is a palindrome. An integer is a palindrome when it reads the same backward as forward.
 
-https://leetcode.com/problems/palindrome-number/description/[Palindrome Number - LeetCode]
-
-[source,java]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/PalindromeNumber.java[]
 ----

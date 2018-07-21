@@ -31,13 +31,13 @@ NOTE: GitHub 对 AsciiDoctor 的支持不好，这块的公式只能显示出原
 
 == Algorithm
 
-https://leetcode.com/problems/median-of-two-sorted-arrays/description/[Median of Two Sorted Arrays - LeetCode]
+=== https://leetcode.com/problems/median-of-two-sorted-arrays/description/[Median of Two Sorted Arrays - LeetCode]
 
 There are two sorted arrays nums1 and nums2 of size m and n respectively.
 
 Find the median of the two sorted arrays. The overall run time complexity should be O(log (m+n)).
 
-[source,java,linenums]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/MedianOfTwoSortedArrays.java[]
 ----

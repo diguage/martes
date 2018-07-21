@@ -4,7 +4,7 @@
 
 == Algorithm
 
-[source,java,linenums]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/XXXX.java[]
 ----

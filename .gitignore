@@ -5,3 +5,4 @@
 index.adoc
 *.svg
 *.css
+.asciidoctor/

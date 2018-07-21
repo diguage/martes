@@ -40,43 +40,51 @@ csc(x)=\frac{1}{sin(x)},  sec(x)=\frac{1}{cos(x)},  cot(x)=\frac{1}{tan(x)}
 .三角恒等式
 [stem]
 ++++
-tan(x)=\frac{sin(x)}{cos(x)},  cot(x)=\frac{cos(x)}{sin(x)}
+\begin{align}
+tan(x)=\frac{sin(x)}{cos(x)} & ,  cot(x)=\frac{cos(x)}{sin(x)}
 \\
-cos^{2}(x) + sin^{2}(x)=1
+cos^{2}(x) + sin^{2}(x) & = 1
 \\
-1+tan^{2}(x)=sec^{2}(x)
+1+tan^{2}(x) & = sec^{2}(x)
 \\
-cot^{2}(x)+1=csc^{2}(x)
+cot^{2}(x)+1 & = csc^{2}(x)
 \\
-sin(x)=cos(\frac{\pi}{2}-x), tan(x)=cot(\frac{\pi}{2}-x), sec(x)=csc(\frac{\pi}{2}-x)
+sin(x) = cos(\frac{\pi}{2}-x), tan(x) & = cot(\frac{\pi}{2}-x), sec(x) = csc(\frac{\pi}{2}-x)
+\end{align}
 ++++
 
 .公式
 [stem]
 ++++
 \begin{align}
-sin(A+B) & = sin(A)cos(B)+cos(A)sin(B) \\ cos(A+B) 
-& = cos(A)cos(B)-sin(A)sin(B) \\ sin(A-B) 
-& = sin(A)cos(B)-cos(A)sin(B) \\ cos(A-B) 
-& = cos(A)cos(B)+sin(A)sin(B) \\ sin(2x) 
-& = 2sin(x)cos(x)             \\ cos(2x) 
-& = 2cos^{2}(x) - 1 = 1 - 2sin^{2}(x)
+sin(A+B) & = sin(A)cos(B)+cos(A)sin(B) \\ 
+cos(A+B) & = cos(A)cos(B)-sin(A)sin(B) \\ 
+sin(A-B) & = sin(A)cos(B)-cos(A)sin(B) \\ 
+cos(A-B) & = cos(A)cos(B)+sin(A)sin(B) \\ 
+sin(2x) & = 2sin(x)cos(x)             \\ 
+cos(2x) & = 2cos^{2}(x) - 1 = 1 - 2sin^{2}(x)
 \end{align}
 ++++
 
 == Algorithm
 
-[source,java,linenums]
+=== https://leetcode.com/problems/3sum/description/[3Sum - LeetCode]
+
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/ThreeSum.java[]
 ----
 
-[source,java,linenums]
+=== https://leetcode.com/problems/remove-duplicates-from-sorted-array/description/[Remove Duplicates from Sorted Array - LeetCode]
+
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/RemoveDuplicatesFromSortedArray.java[]
 ----
 
-[source,java,linenums]
+=== https://leetcode.com/problems/remove-element/description/[Remove Element - LeetCode]
+
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/RemoveElement.java[]
 ----
@@ -86,49 +94,9 @@ include::{source_base_path}/RemoveElement.java[]
 
 I wrote a Shell script. If you start the script, it can monitor the file change and then convert the AsciiDoctor files to HTML files. The source is as following:
 
-[source,bash,linenums]
+[source,bash,{source_attrs}]
 ----
-#!/bin/bash
-#
-# AsciiDoctor 实时监控预览工具
-# 
-# Author: D瓜哥，https://www.diguage.com/
-# Date:   2018-07-17
-#
-
-# https://stackoverflow.com/a/9168553/951836
-# kill -9 $(lsof -i:9999 -t) 2> /dev/null
-pid=$(lsof -i:9999 -t); kill -TERM $pid || kill -KILL $pid
-# Start a HTTP Server
-python3 -m http.server 9999 &
-
-function a2h() {
-  afile="$1"
-  if [ ! -z "$afile" -a "$afile" != " " ]; then
-    extension="${afile##*.}"
-    if [ $extension = 'adoc' ]; then
-      # https://stackoverflow.com/a/46250107/951836
-      hfile="`echo $1 | sed -r 's/(.+)\..+|(.*)/\1\2/'`.html"
-      rm -f $hfile &
-      # echo $afile, $hfile
-      asciidoctor -o $hfile $afile
-      echo "Update $afile ..."
-    fi
-  fi
-}
-export -f a2h
-
-# https://stackoverflow.com/a/965072/951836
-# https://stackoverflow.com/a/3228592/951836
-#FILE=123.abc.adoc; echo ${FILE%.adoc};
-
-echo "Start to monitor `pwd` ..."
-
-# https://stackoverflow.com/a/13807906/951836
-# https://stackoverflow.com/a/11003457/951836
-# https://github.com/emcrisostomo/fswatch/wiki/How-to-Use-fswatch#piping-fswatch-output-to-another-process
-# https://stackoverflow.com/a/25524053/951836
-fswatch -0 -e "*.html" -i "*.adoc$" `pwd` | xargs -0 -n 1 -I {} bash -c 'a2h "$@"' _ {}
+include::./asciidocd[]
 ----
 
 == English

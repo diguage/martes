@@ -30,17 +30,17 @@ I read the "The Calculus Lifesaver: All the Tools You Need to Excel at Calculus"
 
 == Algorithm
 
-https://leetcode.com/problems/plus-one/description/[Plus One - LeetCode]
+=== https://leetcode.com/problems/plus-one/description/[Plus One - LeetCode]
 
-[source,java,linenums]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/PlusOne.java[]
 ----
 
 
-https://leetcode.com/problems/container-with-most-water/description/[Container With Most Water - LeetCode]
+=== https://leetcode.com/problems/container-with-most-water/description/[Container With Most Water - LeetCode]
 
-[source,java,linenums]
+[source,java,{source_attrs}]
 ----
 include::{source_base_path}/ContainerWithMostWater.java[]
 ----

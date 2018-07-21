@@ -61,6 +61,7 @@ function a2h() {
                     -a stem=latexmath \
                     -a allow-uri-read \
                     -a source_base_path=https://raw.githubusercontent.com/diguage/leetcode/master/src/main/java/com/diguage/algorithm/leetcode \
+                    -a source_attrs=linenums \
                     $afile -o $hfile
 
       # 调整样式
