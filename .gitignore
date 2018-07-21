@@ -1,5 +1,7 @@
 *.iml
 *.html
 *.pdf
-styles/
+/styles/
 index.adoc
+*.svg
+*.css

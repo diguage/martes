@@ -2,7 +2,7 @@
 
 == Mathematics
 
-[dot,0716_triangle,svg]
+[graphviz,0716_triangle,svg]
 ....
 graph triangle {
     node [shape=point];
