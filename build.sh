@@ -96,8 +96,9 @@ touch $index_file
 cat >> $index_file <<EOF
 = MARTES
 
-EOF
+源码在 https://github.com/diguage/martes[diguage/martes: MARTES]。欢迎**发 PR 打脸；开 Issue 撕逼**。
 
+EOF
 
 for a in `ls *.adoc`
 do
