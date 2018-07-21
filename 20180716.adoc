@@ -2,15 +2,15 @@
 
 == Mathematics
 
-[graphviz,0716_triangle,svg]
-....
-graph triangle {
-    node [shape=point];
-     a -- b[label = "邻边"];
-     b -- c[label = "对边"];
-     a -- c[label = "斜边"];
- }
-....
+//[graphviz,0716_triangle,svg]
+//....
+//graph triangle {
+//    node [shape=point];
+//     a -- b[label = "邻边"];
+//     b -- c[label = "对边"];
+//     a -- c[label = "斜边"];
+// }
+//....
 
 .基本公式
 [stem]
@@ -90,6 +90,9 @@ include::{source_base_path}/RemoveElement.java[]
 ----
 
 == Review
+
+I read https://medium.com/techtive/does-your-team-write-good-code-8b1dcec6404d[Does your team write good code?] on Saturday. I wrote my thoughts.
+
 == Tip
 
 I wrote a Shell script. If you start the script, it can monitor the file change and then convert the AsciiDoctor files to HTML files. The source is as following:
