@@ -3,7 +3,6 @@
 :stem: latexmath
 :source-language: java
 :source-highlighter: coderay
-// :source-highlighter: pygments
 :source_attrs: linenums
 :pygments-style: monokai
 :pygments-linenums-mode: table
