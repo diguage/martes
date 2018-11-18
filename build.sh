@@ -123,7 +123,7 @@ cd $base_dir
 echo "`date '+%Y-%m-%d %H:%M:%S'` build"
 
 if [ -n "$1" ]; then
-    rsync -avz --exclude=".*" ./*.html $style_dir deployer@notes.diguage.com:/home/deployer/diguage.com/notes/martes
+    rsync -avz --exclude=".*" ./*.html ./*.svg $style_dir deployer@notes.diguage.com:/home/deployer/diguage.com/notes/martes
     echo ""
     echo "`date '+%Y-%m-%d %H:%M:%S'` deploy"
     echo ""
