@@ -1,4 +1,5 @@
 = 20180716 MARTES
+include::_attributes.adoc[]
 
 == Mathematics
 
@@ -57,11 +58,11 @@ sin(x) = cos(\frac{\pi}{2}-x), tan(x) & = cot(\frac{\pi}{2}-x), sec(x) = csc(\fr
 [stem]
 ++++
 \begin{align}
-sin(A+B) & = sin(A)cos(B)+cos(A)sin(B) \\ 
-cos(A+B) & = cos(A)cos(B)-sin(A)sin(B) \\ 
-sin(A-B) & = sin(A)cos(B)-cos(A)sin(B) \\ 
-cos(A-B) & = cos(A)cos(B)+sin(A)sin(B) \\ 
-sin(2x) & = 2sin(x)cos(x)             \\ 
+sin(A+B) & = sin(A)cos(B)+cos(A)sin(B) \\
+cos(A+B) & = cos(A)cos(B)-sin(A)sin(B) \\
+sin(A-B) & = sin(A)cos(B)-cos(A)sin(B) \\
+cos(A-B) & = cos(A)cos(B)+sin(A)sin(B) \\
+sin(2x) & = 2sin(x)cos(x)             \\
 cos(2x) & = 2cos^{2}(x) - 1 = 1 - 2sin^{2}(x)
 \end{align}
 ++++

@@ -1,4 +1,5 @@
 = 20180625 周 ARTS
+include::_attributes.adoc[]
 
 == Algorithm
 

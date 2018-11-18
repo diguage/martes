@@ -1,0 +1,10 @@
+:doctype: book
+:icons: font
+:stem: latexmath
+:source-language: java
+:source-highlighter: coderay
+// :source-highlighter: pygments
+:source_attrs: linenums
+:pygments-style: monokai
+:pygments-linenums-mode: table
+:source_base_path: https://raw.githubusercontent.com/diguage/leetcode/master/src/main/java/com/diguage/algorithm/leetcode

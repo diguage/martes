@@ -1,8 +1,5 @@
 = 20180709 MARTES
-{docdate}
-:source-highlighter: pygments
-:pygments-style: monokai
-:stem: latexmath
+include::_attributes.adoc[]
 
 == Mathematics
 
@@ -16,7 +13,7 @@ I read the "The Calculus Lifesaver: All the Tools You Need to Excel at Calculus"
 * *上域：* 可能输出的集合。
 * *值域：* 所有可能的输出所组成的集合。**值域是上域的一个子集。值域是实际输出的集合。**
 
-// 
+//
 
 * *闭区间：* stem:[[a,b]] 等价于 stem:[a \leqslant  x \leqslant b]，包含两端。
 * *开区间：* stem:[(a,b)] 等价于 stem:[a <  x < b]，不包含两端。
