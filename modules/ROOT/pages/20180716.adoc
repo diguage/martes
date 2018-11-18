@@ -100,7 +100,7 @@ I wrote a Shell script. If you start the script, it can monitor the file change 
 
 [source,bash,{source_attrs}]
 ----
-include::./asciidocd[]
+include::example$asciidocd[]
 ----
 
 == English
