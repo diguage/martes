@@ -1,0 +1,6 @@
+name: martes
+title: MARTES 挑战
+version: latest
+start_page: index.adoc
+nav:
+- modules/ROOT/nav.adoc

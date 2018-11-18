@@ -2,7 +2,6 @@
 *.html
 *.pdf
 /styles/
-index.adoc
 *.svg
 *.css
 .asciidoctor/
